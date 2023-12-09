@@ -1,0 +1,30 @@
+{
+    "env": {
+		"browser": true,
+		"es2021": true
+	},
+    "extends": ["plugin:react/recommended", "plugin:@typescript-eslint/recommended", "prettier", "plugin:prettier/recommended"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+    "plugins": ["react", "@typescript-eslint", "prettier"],
+    "rules": {
+        "no-empty-function": "off",
+		"@typescript-eslint/no-empty-function": ["off"],
+		"no-unused-vars": "off",
+		"@typescript-eslint/no-unused-vars": ["error"],
+		"no-var": "error",
+		"no-self-assign": "error",
+		"array-bracket-newline": "error",
+		"object-property-newline": "error",
+		"lines-between-class-members": "error",
+		"arrow-parens": "error",
+		"semi": "off",
+		"no-useless-escape": "off"
+    }
+  }
