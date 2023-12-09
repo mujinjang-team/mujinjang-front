@@ -1,12 +1,17 @@
 import React from 'react'
-import './App.css'
 import Router from './routes/Router'
+import Reset from '@/styles/reset'
+import Normalize from '@/styles/normalize'
 
 function App() {
 	return (
-		<div className="App">
-			<Router />
-		</div>
+		<>
+			<Reset />
+			<Normalize />
+			<div className="App">
+				<Router />
+			</div>
+		</>
 	)
 }
 
