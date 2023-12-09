@@ -6,7 +6,7 @@ import User from '@/pages/user/User'
 import Home from '@/pages/Home'
 import CouponCreate from '@/pages/admin/Create'
 import UsedDashboard from '@/pages/admin/UsedDashboard'
-import CreateDashboard from '@/pages/admin/CreateDashboard'
+import CreatedDashboard from '@/pages/admin/CreatedDashboard'
 import NotFound from '@/pages/NotFound'
 
 const Router = () => {
@@ -19,7 +19,7 @@ const Router = () => {
 				</Route>
 				<Route element={<AdminLayout />}>
 					<Route path="/admin/dashboard/used" element={<UsedDashboard />} />
-					<Route path="/admin/dashboard/create" element={<CreateDashboard />} />
+					<Route path="/admin/dashboard/created" element={<CreatedDashboard />} />
 					<Route path="/admin/create" element={<CouponCreate />} />
 				</Route>
 				<Route path="*" element={<NotFound />} />
