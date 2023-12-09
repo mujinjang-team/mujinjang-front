@@ -25,6 +25,7 @@
 		"lines-between-class-members": "error",
 		"arrow-parens": "error",
 		"semi": "off",
-		"no-useless-escape": "off"
+		"no-useless-escape": "off",
+		"@typescript-eslint/no-explicit-any": "off"
     }
   }
