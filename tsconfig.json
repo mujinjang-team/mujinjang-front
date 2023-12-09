@@ -6,7 +6,6 @@
       "dom.iterable",
       "esnext"
     ],
-    "baseUrl": "./",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -17,17 +16,19 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots": ["./node_modules/@types", "./types", "./src/**/*"],
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-    },
+    "typeRoots": ["./node_modules/@types", "./src/types", "./src/**/*"],
   },
+  "extends": "./tsconfig.paths.json",
   "include": [
-    "src"
+    "src",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/types/*.d.ts", 
+  ],
+  "exclude": [
+    "node_modules",
   ]
 }

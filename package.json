@@ -2,7 +2,9 @@
   "name": "mujinjang-front",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -22,10 +24,10 @@
   },
   "scripts": {
     "start": "NODE_ENV=production serve -s build",
-    "build": "NODE_ENV=production react-scripts build",
-    "dev": "NODE_ENV=development react-scripts start",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "build": "NODE_ENV=production craco build",
+    "dev": "NODE_ENV=development craco start",
+    "test": "craco test",
+    "eject": "craco eject",
     "prettier": "prettier --config .prettierrc --write **/**/*.{ts,tsx}"
   },
   "eslintConfig": {
@@ -47,12 +49,15 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
+    "craco-alias": "^3.0.1",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.0.1",
     "prettier": "^3.1.0",
-    "serve": "^14.2.1"
+    "serve": "^14.2.1",
+    "tsconfig-paths-webpack-plugin": "^4.1.0"
   }
 }
