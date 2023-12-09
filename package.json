@@ -20,10 +20,12 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "NODE_ENV=production serve -s build",
+    "build": "NODE_ENV=production react-scripts build",
+    "dev": "NODE_ENV=development react-scripts start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --config .prettierrc --write **/**/*.{ts,tsx}"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +51,7 @@
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.0.1",
-    "prettier": "^3.1.0"
+    "prettier": "^3.1.0",
+    "serve": "^14.2.1"
   }
 }
