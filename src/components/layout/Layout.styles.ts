@@ -8,6 +8,7 @@ export const HeaderWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	background-color: #ffffff;
+	border-bottom: 1px solid #999;
 `
 
 export const ContainerWrapper = styled.div`
