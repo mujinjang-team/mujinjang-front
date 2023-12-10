@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '@/components/common/Button'
 import { Link } from 'react-router-dom'
-import { HomeContainer } from '@/components/user/home/Home.styles'
+import { HomeContainer } from '@/components/home/Home.styles'
 
 const Home = () => {
 	return (
