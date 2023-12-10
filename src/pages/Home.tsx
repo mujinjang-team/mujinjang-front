@@ -12,10 +12,10 @@ const Home = () => {
 			<Link to="/admin/create">
 				<Button variant="blue">어드민 - 쿠폰 발급</Button>
 			</Link>
-			<Link to="/admin/coupon/created">
+			<Link to="/admin/dashboard/created">
 				<Button variant="blue">어드민 - 쿠폰 발급 내역 확인</Button>
 			</Link>
-			<Link to="/admin/coupon/used">
+			<Link to="/admin/dashboard/used">
 				<Button variant="blue">어드민 - 쿠폰 사용 내역 확인</Button>
 			</Link>
 		</HomeContainer>
