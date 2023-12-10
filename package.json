@@ -5,6 +5,9 @@
   "type": "module",
   "dependencies": {
     "@craco/craco": "^7.1.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.20",
     "@tanstack/react-query": "^5.13.4",
     "@tanstack/react-query-devtools": "^5.13.4",
     "@testing-library/jest-dom": "^5.14.1",
