@@ -11,11 +11,29 @@ export const CreatedDashboardContainer = styled.div`
 
 export const CreatedDashboardHeaderContainer = styled.div`
 	display: flex;
+	flex-direction: column;
+	gap: 12px;
 `
 
-export const CreatedDashboardHeader = styled.span`
+export const CreatedDashboardHeaderContentRow = styled.div`
+	display: flex;
+	justify-content: start;
+	gap: 12px;
+`
+
+export const CreatedDashboardHeaderTitle = styled.div`
 	font-size: 28px;
 	font-weight: 700;
+`
+
+export const CreatedDashboardHeaderSubTitle = styled.span`
+	font-size: 20px;
+	font-weight: 600;
+`
+
+export const CreatedDashboardHeaderContent = styled.span`
+	font-size: 20px;
+	font-weight: 500;
 `
 
 export const CreatedDashboardContentContainer = styled.div`
