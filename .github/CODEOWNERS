@@ -1,0 +1,5 @@
+* @mujinjang-team/frontend-reviews
+.github/
+
+.github/* @mujinjang-team/infrastructure-reviews
+Dockerfile @mujinjang-team/infrastructure-reviews
