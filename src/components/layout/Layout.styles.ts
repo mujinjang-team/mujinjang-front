@@ -16,5 +16,7 @@ export const ContainerWrapper = styled.div`
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
-	padding-top: 74px;
+	max-width: 1000px;
+	padding: 74px 12px 0 12px;
+	margin: 0 auto;
 `
