@@ -34,6 +34,7 @@
     "test": "craco test",
     "eject": "craco eject",
     "prettier": "prettier --config .prettierrc --write **/**/*.{ts,tsx}"
+    "prettier:check": "prettier --config .prettierrc --check **/**/*.{ts,tsx}"
   },
   "eslintConfig": {
     "extends": [
