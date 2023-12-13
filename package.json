@@ -34,7 +34,7 @@
     "dev": "NODE_ENV=development craco start",
     "test": "craco test",
     "eject": "craco eject",
-    "prettier": "prettier --config .prettierrc --write **/**/*.{ts,tsx}"
+    "prettier": "prettier --config .prettierrc --write **/**/*.{ts,tsx}",
     "prettier:check": "prettier --config .prettierrc --check **/**/*.{ts,tsx}"
   },
   "eslintConfig": {
