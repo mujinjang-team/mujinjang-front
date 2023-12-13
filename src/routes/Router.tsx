@@ -22,7 +22,9 @@ const Router = () => {
 					<Route path="/admin/dashboard/created" element={<CreatedDashboard />} />
 					<Route path="/admin/create" element={<CouponCreate />} />
 				</Route>
-				<Route path="*" element={<NotFound />} />
+				<Route element={<MainLayout />}>
+					<Route path="*" element={<NotFound />} />
+				</Route>
 			</Routes>
 		</BrowserRouter>
 	)
