@@ -1,19 +1,24 @@
 import React, { useState } from 'react'
-import { CouponControlContainer, UserContainer, UserInfo, UserInfoContainer } from '@/components/user/User.styles'
+import {
+	CouponControlContainer,
+	CouponDetailContainer,
+	CouponDetailInfo,
+	CouponDetailInfoContainer,
+} from '@/components/coupon/CouponDetail.styles'
 import { useParams } from 'react-router-dom'
 import {
 	CouponUseAvaliableButton,
 	CouponUsedButton,
 	CouponCreateButton,
 	CouponCreateDisableButton,
-} from '@/components/user/CouponButton'
+} from '@/components/coupon/CouponButton'
 
 type CouponProps = {
 	isCreated: boolean
 	isAvailable: boolean
 }
 
-const User = () => {
+const CouponDetail = () => {
 	const { id } = useParams()
 	const [isCouponCreateAvailable] = useState(true)
 	const [coupon] = useState<CouponProps>({
@@ -22,10 +27,10 @@ const User = () => {
 	})
 
 	return (
-		<UserContainer>
-			<UserInfoContainer>
-				<UserInfo>선택된 User Seq : {id}</UserInfo>
-			</UserInfoContainer>
+		<CouponDetailContainer>
+			<CouponDetailInfoContainer>
+				<CouponDetailInfo>선택된 User Seq : {id}</CouponDetailInfo>
+			</CouponDetailInfoContainer>
 			<CouponControlContainer>
 				{coupon.isCreated ? (
 					coupon.isAvailable ? (
@@ -39,8 +44,8 @@ const User = () => {
 					<CouponCreateDisableButton />
 				)}
 			</CouponControlContainer>
-		</UserContainer>
+		</CouponDetailContainer>
 	)
 }
 
-export default User
+export default CouponDetail

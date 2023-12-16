@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const UserContainer = styled.div`
+export const CouponDetailContainer = styled.div`
 	display: flex;
 	width: 100%;
 	height: 100%;
@@ -10,12 +10,12 @@ export const UserContainer = styled.div`
 	gap: 60px;
 `
 
-export const UserInfoContainer = styled.div`
+export const CouponDetailInfoContainer = styled.div`
 	display: flex;
 	justify-content: center;
 `
 
-export const UserInfo = styled.span`
+export const CouponDetailInfo = styled.span`
 	font-size: 32px;
 	font-weight: 500;
 `

@@ -2,12 +2,13 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainLayout from '@/components/layout/MainLayout'
 import AdminLayout from '@/components/layout/AdminLayout'
-import User from '@/pages/user/User'
 import Home from '@/pages/Home'
-import CouponCreate from '@/pages/admin/Create'
-import UsedDashboard from '@/pages/admin/UsedDashboard'
-import CreatedDashboard from '@/pages/admin/CreatedDashboard'
 import NotFound from '@/pages/NotFound'
+import CouponList from '@/pages/coupon/CouponList'
+import CouponDetail from '@/pages/coupon/CouponDetail'
+import AdminCouponList from '@/pages/admin/AdminCouponList'
+import AdminCouponDetail from '@/pages/admin/AdminCouponDetail'
+import AdminCouponCreate from '@/pages/admin/AdminCouponCreate'
 
 const Router = () => {
 	return (
@@ -15,12 +16,13 @@ const Router = () => {
 			<Routes>
 				<Route element={<MainLayout />}>
 					<Route path="/" element={<Home />} />
-					<Route path="/user/:id" element={<User />} />
+					<Route path="/coupon/list" element={<CouponList />} />
+					<Route path="/coupon/detail/:id" element={<CouponDetail />} />
 				</Route>
 				<Route element={<AdminLayout />}>
-					<Route path="/admin/dashboard/used" element={<UsedDashboard />} />
-					<Route path="/admin/dashboard/created" element={<CreatedDashboard />} />
-					<Route path="/admin/create" element={<CouponCreate />} />
+					<Route path="/admin/coupon/list" element={<AdminCouponList />} />
+					<Route path="/admin/coupon/detail/:id" element={<AdminCouponDetail />} />
+					<Route path="/admin/coupon/create" element={<AdminCouponCreate />} />
 				</Route>
 				<Route element={<MainLayout />}>
 					<Route path="*" element={<NotFound />} />

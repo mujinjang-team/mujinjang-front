@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material'
 import styled from 'styled-components'
 
-export const CouponCreateContainer = styled.div`
+export const AdminCouponCreateContainer = styled.div`
 	display: flex;
 	width: 100%;
 	height: 100%;
@@ -11,7 +11,7 @@ export const CouponCreateContainer = styled.div`
 	gap: 60px;
 `
 
-export const CreateAmountInputContainer = styled.div`
+export const AdminCreateAmountInputContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -19,12 +19,12 @@ export const CreateAmountInputContainer = styled.div`
 	gap: 28px;
 `
 
-export const CreateAmountGuideText = styled.span`
+export const AdminCouponCreateAmountGuideText = styled.span`
 	font-size: 32px;
 	font-weight: 500;
 `
 
-export const CreateAmountInput = styled(TextField).attrs({
+export const AdminCouponCreateAmountInput = styled(TextField).attrs({
 	type: 'number',
 	placeholder: 'Type Number',
 })`
@@ -33,7 +33,7 @@ export const CreateAmountInput = styled(TextField).attrs({
 	}
 `
 
-export const CouponCreateButtonContainer = styled.div`
+export const AdminCouponCreateButtonContainer = styled.div`
 	display: flex;
 
 	> * {

@@ -6,17 +6,14 @@ import { HomeContainer } from '@/components/home/Home.styles'
 const Home = () => {
 	return (
 		<HomeContainer>
-			<Link to="/user/1">
+			<Link to="/coupon/list">
 				<Button variant="blue">유저 - 쿠폰 사용</Button>
 			</Link>
-			<Link to="/admin/create">
-				<Button variant="blue">어드민 - 쿠폰 발급</Button>
+			<Link to="/admin/coupon/list">
+				<Button variant="blue">어드민 - 쿠폰 내역</Button>
 			</Link>
-			<Link to="/admin/dashboard/created">
-				<Button variant="blue">어드민 - 쿠폰 발급 내역 확인</Button>
-			</Link>
-			<Link to="/admin/dashboard/used">
-				<Button variant="blue">어드민 - 쿠폰 사용 내역 확인</Button>
+			<Link to="/admin/coupon/create">
+				<Button variant="blue">어드민 - 쿠폰 생성</Button>
 			</Link>
 		</HomeContainer>
 	)
