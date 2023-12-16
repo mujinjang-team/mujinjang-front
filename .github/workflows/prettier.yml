@@ -1,0 +1,32 @@
+name: Prettier
+
+on:
+  pull_request:
+    paths:
+      - src/**/*.ts
+      - src/**/*.tsx
+      - .prettierrc
+      - .github/workflows/prettier.yml
+      
+
+env:
+  NODE_VERSION: 20.x
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Check prettier
+        run: yarn run prettier:check
+  
