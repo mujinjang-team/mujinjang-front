@@ -5,25 +5,20 @@ export const AdminCouponListContainer = styled.div`
 	width: 100%;
 	height: 100%;
 	flex-direction: column;
-	gap: 32px;
-	padding: 12px;
+	padding: 12px 12px 0 12px;
+	gap: 28px;
 `
 
 export const AdminCouponListHeaderContainer = styled.div`
 	display: flex;
-	flex-direction: column;
-	gap: 12px;
-`
-
-export const AdminCouponListHeaderContentRow = styled.div`
-	display: flex;
-	justify-content: start;
-	gap: 12px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 `
 
 export const AdminCouponListHeaderTitle = styled.div`
-	font-size: 28px;
-	font-weight: 700;
+	font-size: 2rem;
+	font-weight: bold;
 `
 
 export const AdminCouponListHeaderSubTitle = styled.span`
