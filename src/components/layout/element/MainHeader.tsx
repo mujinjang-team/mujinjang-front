@@ -17,7 +17,7 @@ const MainHeader = () => {
 	return (
 		<HeaderWrapper>
 			<HeaderContainer>
-				<LogoLink to="/">
+				<LogoLink to={!!loginUserSeq ? '/coupon/list' : '/'}>
 					<MujinjangLogo />
 				</LogoLink>
 				{!!loginUserSeq && <LogoutButton onClick={onClickLogoutButton}>로그아웃</LogoutButton>}
