@@ -7,7 +7,6 @@ import NotFound from '@/pages/NotFound'
 import CouponList from '@/pages/coupon/CouponList'
 import CouponDetail from '@/pages/coupon/CouponDetail'
 import AdminCouponList from '@/pages/admin/AdminCouponList'
-import AdminCouponDetail from '@/pages/admin/AdminCouponDetail'
 import AdminCouponCreate from '@/pages/admin/AdminCouponCreate'
 
 const Router = () => {
@@ -21,7 +20,6 @@ const Router = () => {
 				</Route>
 				<Route element={<AdminLayout />}>
 					<Route path="/admin/coupon/list" element={<AdminCouponList />} />
-					<Route path="/admin/coupon/detail/:id" element={<AdminCouponDetail />} />
 					<Route path="/admin/coupon/create" element={<AdminCouponCreate />} />
 				</Route>
 				<Route element={<MainLayout />}>
