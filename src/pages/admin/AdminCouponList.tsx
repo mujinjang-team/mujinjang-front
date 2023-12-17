@@ -20,6 +20,7 @@ const AdminCouponList = () => {
 			type: 'FIXED',
 			discount: 0,
 			amount: 1,
+			remainCouponNum: 1,
 			createdAt: '2023-12-17T06:57:22.025Z',
 		},
 		{
@@ -30,6 +31,7 @@ const AdminCouponList = () => {
 			type: 'PERCENTAGE',
 			discount: 0,
 			amount: 1,
+			remainCouponNum: 1,
 			createdAt: '2023-12-17T06:57:22.025Z',
 		},
 	]
@@ -71,7 +73,12 @@ const AdminCouponList = () => {
 		{
 			field: 'amount',
 			headerName: '발급 수량',
-			width: 100,
+			width: 80,
+		},
+		{
+			field: 'remainCouponNum',
+			headerName: '잔여 수량',
+			width: 80,
 		},
 		{
 			field: 'createdAt',

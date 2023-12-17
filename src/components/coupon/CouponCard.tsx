@@ -13,7 +13,7 @@ import CouponIcon from '@/assets/icons/icon-coupon.svg'
 import { CouponCardProps } from '@/types/Coupon.types'
 
 const CouponCard = ({ coupon }: CouponCardProps) => {
-	const { couponId, name, code, type, discount, amount, createdAt } = coupon
+	const { couponId, name, code, type, discount, amount, remainCouponNum, createdAt } = coupon
 	const formattedCreatedTime = dayjs(createdAt).format('YYYY-MM-DD HH:MM')
 
 	return (
@@ -41,6 +41,10 @@ const CouponCard = ({ coupon }: CouponCardProps) => {
 				<CouponCardInfoRow>
 					<CouponCardInfoTitle>쿠폰 발급 수량</CouponCardInfoTitle>
 					<CouponCardInfoContent>{amount}</CouponCardInfoContent>
+				</CouponCardInfoRow>
+				<CouponCardInfoRow>
+					<CouponCardInfoTitle>쿠폰 잔여 수량</CouponCardInfoTitle>
+					<CouponCardInfoContent>{remainCouponNum}</CouponCardInfoContent>
 				</CouponCardInfoRow>
 				<CouponCardInfoRow>
 					<CouponCardInfoTitle>쿠폰 발급 일자</CouponCardInfoTitle>

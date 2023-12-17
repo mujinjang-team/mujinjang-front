@@ -5,6 +5,7 @@ export type CouponDataType = {
 	type: 'FIXED' | 'PERCENTAGE'
 	discount: number
 	amount: number
+	remainCouponNum: number
 	createdAt: string
 }
 

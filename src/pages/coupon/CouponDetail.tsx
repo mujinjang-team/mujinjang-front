@@ -38,6 +38,7 @@ const CouponDetail = () => {
 		type: 'FIXED',
 		discount: 0,
 		amount: 1,
+		remainCouponNum: 1,
 		createdAt: '2023-12-17T06:57:22.025Z',
 	}
 	const [couponStatus] = useState<CouponProps>({
