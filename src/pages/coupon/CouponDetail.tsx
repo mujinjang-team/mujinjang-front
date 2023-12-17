@@ -12,6 +12,7 @@ import {
 	CouponCreateButton,
 	CouponCreateDisableButton,
 } from '@/components/coupon/CouponButton'
+import withAuthCheck from '@/containers/withAuthCheck'
 
 type CouponProps = {
 	isCreated: boolean
@@ -48,4 +49,4 @@ const CouponDetail = () => {
 	)
 }
 
-export default CouponDetail
+export default withAuthCheck(CouponDetail)

@@ -7,6 +7,7 @@ import {
 } from '@/components/coupon/CouponList.styles'
 import { CouponDataType } from '@/types/Coupon.types'
 import CouponCard from '@/components/coupon/CouponCard'
+import withAuthCheck from '@/containers/withAuthCheck'
 
 const CouponList = () => {
 	const [couponList] = useState<CouponDataType[]>([
@@ -48,4 +49,4 @@ const CouponList = () => {
 	)
 }
 
-export default CouponList
+export default withAuthCheck(CouponList)
