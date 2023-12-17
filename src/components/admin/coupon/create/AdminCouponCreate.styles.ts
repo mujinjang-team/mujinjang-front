@@ -61,6 +61,8 @@ export const StyledTextInput = styled(TextField)`
 
 export const AdminCouponCreateButtonContainer = styled.div`
 	display: flex;
+	flex-direction: column;
+	gap: 12px;
 
 	> * {
 		width: 100%;

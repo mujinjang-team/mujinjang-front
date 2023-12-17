@@ -112,6 +112,14 @@ const AdminCouponCreate = () => {
 				>
 					쿠폰 발급하기
 				</Button>
+				<Button
+					variant="blue"
+					onClick={() => {
+						navigate('/admin/coupon/list')
+					}}
+				>
+					발급 현황 대시보드로 돌아가기
+				</Button>
 			</AdminCouponCreateButtonContainer>
 		</AdminCouponCreateContainer>
 	)
