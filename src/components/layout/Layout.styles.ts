@@ -12,6 +12,14 @@ export const HeaderWrapper = styled.div`
 	z-index: 99;
 `
 
+export const HeaderContainer = styled.div`
+	display: flex;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+`
+
 export const ContainerWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
