@@ -9,6 +9,7 @@ export const HeaderWrapper = styled.div`
 	align-items: center;
 	background-color: #ffffff;
 	border-bottom: 1px solid #999;
+	z-index: 99;
 `
 
 export const ContainerWrapper = styled.div`
@@ -19,4 +20,5 @@ export const ContainerWrapper = styled.div`
 	max-width: 1000px;
 	padding: 74px 12px 0 12px;
 	margin: 0 auto;
+	overflow-y: auto;
 `
