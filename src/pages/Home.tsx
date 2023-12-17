@@ -20,7 +20,6 @@ const Home = () => {
 
 	const redirectWithUserSeq = () => {
 		const value = Number(inputRef.current?.value)
-		console.log(value)
 		if (!value || value < USER_MIN_VALUE || value > USER_MAX_VALUE) {
 			alert('올바른 형식의 User ID를 입력해주세요')
 			return
