@@ -7,21 +7,28 @@ export const CouponDetailContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	padding: 0 12px;
-	gap: 60px;
+	gap: 12px;
+`
+
+export const CouponCardContainer = styled.div`
+	display: flex;
+	width: 100%;
+	justify-content: center;
 `
 
 export const CouponDetailInfoContainer = styled.div`
 	display: flex;
-	justify-content: center;
+	justify-content: start;
 `
 
 export const CouponDetailInfo = styled.span`
-	font-size: 32px;
-	font-weight: 500;
+	font-size: 1.5rem;
+	font-weight: bold;
 `
 
 export const CouponControlContainer = styled.div`
 	display: flex;
+	margin-top: 60px;
 
 	> * {
 		width: 100%;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {
+	CouponCardContainer,
 	CouponControlContainer,
 	CouponDetailContainer,
 	CouponDetailInfo,
@@ -14,6 +15,7 @@ import {
 } from '@/components/coupon/CouponButton'
 import withAuthCheck from '@/containers/withAuthCheck'
 import localStorage from '@/libs/localStorage'
+import CouponCard from '@/components/coupon/CouponCard'
 
 type CouponProps = {
 	isCreated: boolean
@@ -23,9 +25,21 @@ type CouponProps = {
 const CouponDetail = () => {
 	const userSeq = localStorage.getItem('user')
 	const { id: couponId } = useParams()
+	console.log(userSeq)
+	console.log(couponId)
 
 	const [isCouponCreateAvailable] = useState(true)
-	const [coupon] = useState<CouponProps>({
+
+	const coupon = {
+		couponId: 1,
+		name: '테스트AA',
+		code: 'AAA',
+		type: 'AA',
+		discount: 0,
+		amount: 1,
+		createdAt: '2023-12-17T06:57:22.025Z',
+	}
+	const [couponStatus] = useState<CouponProps>({
 		isCreated: false,
 		isAvailable: false,
 	})
@@ -33,12 +47,14 @@ const CouponDetail = () => {
 	return (
 		<CouponDetailContainer>
 			<CouponDetailInfoContainer>
-				<CouponDetailInfo>선택된 User Seq : {userSeq}</CouponDetailInfo>
-				<CouponDetailInfo>선택된 Coupon Seq : {couponId}</CouponDetailInfo>
+				<CouponDetailInfo>선택된 쿠폰 정보</CouponDetailInfo>
 			</CouponDetailInfoContainer>
+			<CouponCardContainer>
+				<CouponCard coupon={coupon} />
+			</CouponCardContainer>
 			<CouponControlContainer>
-				{coupon.isCreated ? (
-					coupon.isAvailable ? (
+				{couponStatus.isCreated ? (
+					couponStatus.isAvailable ? (
 						<CouponUseAvaliableButton />
 					) : (
 						<CouponUsedButton />
