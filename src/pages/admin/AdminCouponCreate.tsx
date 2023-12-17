@@ -51,7 +51,7 @@ const AdminCouponCreate = () => {
 				<AdminCouponCreateContentItemWrapper>
 					<AdminCouponCreateContentItemTitle>쿠폰 타입</AdminCouponCreateContentItemTitle>
 					<AdminCouponCreateContentItem>
-						<RadioGroup defaultValue={type} onChange={onTypeChange} row name="coupon-type-radiogroup">
+						<RadioGroup value={type} onChange={onTypeChange} row name="coupon-type-radiogroup">
 							<FormControlLabel value="FIXED" control={<Radio />} label="할인 금액" />
 							<FormControlLabel value="PERCENTAGE" control={<Radio />} label="% (할인율)" />
 						</RadioGroup>
