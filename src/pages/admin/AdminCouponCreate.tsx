@@ -14,10 +14,15 @@ import {
 import Button from '@/components/common/Button'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { CouponDataType } from '@/types/Coupon.types'
+import { useMutation } from '@tanstack/react-query'
+import api, { PostCouponsRequest } from '@/libs/api'
+import { useNavigate } from 'react-router-dom'
 
 type CouponTypeProps = Pick<CouponDataType, 'type'>
 
 const AdminCouponCreate = () => {
+	const navigate = useNavigate()
+
 	const nameRef = useRef<HTMLInputElement>()
 	const codeRef = useRef<HTMLInputElement>()
 	const discountRef = useRef<HTMLInputElement>()
@@ -28,6 +33,17 @@ const AdminCouponCreate = () => {
 		const selectedValue = event.target.value
 		setType(selectedValue as unknown as CouponTypeProps)
 	}
+
+	const { mutate, isPending } = useMutation({
+		mutationKey: ['createCoupon'],
+		mutationFn: async (payload: PostCouponsRequest) => {
+			return await api.postCoupons(payload)
+		},
+		onSuccess: () => {
+			alert('쿠폰 발급이 완료되었습니다')
+			navigate('/admin/coupon/list')
+		},
+	})
 
 	return (
 		<AdminCouponCreateContainer>
@@ -73,7 +89,8 @@ const AdminCouponCreate = () => {
 			<AdminCouponCreateButtonContainer>
 				<Button
 					variant="black"
-					onClick={() => {
+					isLoading={isPending}
+					onClick={async () => {
 						const name = nameRef.current?.value
 						const code = codeRef.current?.value
 						const discount = discountRef.current?.value
@@ -84,7 +101,13 @@ const AdminCouponCreate = () => {
 							return
 						}
 
-						console.log('call api')
+						mutate({
+							name: name,
+							code: code,
+							type: type as unknown as string,
+							discount: Number(discount),
+							amount: Number(discount),
+						})
 					}}
 				>
 					쿠폰 발급하기
