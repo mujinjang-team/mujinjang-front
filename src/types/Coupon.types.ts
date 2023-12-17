@@ -2,7 +2,7 @@ export type CouponDataType = {
 	couponId: number
 	name: string
 	code: string
-	type: string
+	type: 'FIXED' | 'PERCENTAGE'
 	discount: number
 	amount: number
 	createdAt: string

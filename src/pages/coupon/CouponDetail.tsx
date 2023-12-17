@@ -16,6 +16,7 @@ import {
 import withAuthCheck from '@/containers/withAuthCheck'
 import localStorage from '@/libs/localStorage'
 import CouponCard from '@/components/coupon/CouponCard'
+import { CouponDataType } from '@/types/Coupon.types'
 
 type CouponProps = {
 	isCreated: boolean
@@ -30,11 +31,11 @@ const CouponDetail = () => {
 
 	const [isCouponCreateAvailable] = useState(true)
 
-	const coupon = {
+	const coupon: CouponDataType = {
 		couponId: 1,
 		name: '테스트AA',
 		code: 'AAA',
-		type: 'AA',
+		type: 'FIXED',
 		discount: 0,
 		amount: 1,
 		createdAt: '2023-12-17T06:57:22.025Z',
