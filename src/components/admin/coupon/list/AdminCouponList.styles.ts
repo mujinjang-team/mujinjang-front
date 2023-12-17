@@ -34,3 +34,22 @@ export const AdminCouponListHeaderContent = styled.span`
 export const AdminCouponListContentContainer = styled.div`
 	display: flex;
 `
+
+export const AdminCouponListEmptyViewWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	gap: 32px;
+`
+
+export const AdminCouponListEmptyViewTitle = styled.div`
+	font-size: 2rem;
+	font-weight: bold;
+`
+
+export const AdminCouponListEmptyViewSubTitle = styled.p`
+	font-size: 1rem;
+	font-weight: 500;
+`
