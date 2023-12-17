@@ -8,6 +8,7 @@ import {
 import { CouponDataType } from '@/types/Coupon.types'
 import CouponCard from '@/components/coupon/CouponCard'
 import withAuthCheck from '@/containers/withAuthCheck'
+import { Link } from 'react-router-dom'
 
 const CouponList = () => {
 	const [couponList] = useState<CouponDataType[]>([
@@ -43,7 +44,9 @@ const CouponList = () => {
 	return (
 		<CouponListWrapper>
 			{couponList.map((coupon) => (
-				<CouponCard coupon={coupon} key={coupon.couponId} />
+				<Link to={`/coupon/detail/${coupon.couponId}`} key={coupon.couponId}>
+					<CouponCard coupon={coupon} />
+				</Link>
 			))}
 		</CouponListWrapper>
 	)

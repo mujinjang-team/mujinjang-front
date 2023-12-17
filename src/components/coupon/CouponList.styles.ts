@@ -9,6 +9,10 @@ export const CouponListWrapper = styled.div`
 	margin: 0 auto;
 	padding-top: 20px;
 	gap: 28px;
+
+	> * {
+		cursor: pointer;
+	}
 `
 
 export const CouponListEmptyViewWrapper = styled.div`
