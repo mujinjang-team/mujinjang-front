@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import localStorage from '@/libs/localStorage'
 import { useNavigate } from 'react-router'
+import { USER_MAX_VALUE, USER_MIN_VALUE } from '@/constants'
 
 function withAuthCheck<Props extends Record<string, any>>(Component: React.FunctionComponent<Props>) {
 	const WithAuthCheck = React.forwardRef((props: Parameters<typeof Component>[0], ref: React.ForwardedRef<any>) => {
@@ -10,7 +11,7 @@ function withAuthCheck<Props extends Record<string, any>>(Component: React.Funct
 			const user = localStorage.getItem('user')
 			const userNumber = Number(user)
 
-			if (!user || userNumber < 1 || userNumber > 10000000) {
+			if (!user || userNumber < USER_MIN_VALUE || userNumber > USER_MAX_VALUE) {
 				return false
 			}
 

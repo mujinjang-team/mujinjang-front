@@ -11,16 +11,17 @@ import {
 } from '@/components/home/Home.styles'
 import { getRandom } from '@/utils'
 import localStorage from '@/libs/localStorage'
+import { USER_MAX_VALUE, USER_MIN_VALUE } from '@/constants'
 
 const Home = () => {
-	const defaultUserSeq = getRandom(1, 10 * 1000 * 1000)
+	const defaultUserSeq = getRandom(USER_MIN_VALUE, USER_MAX_VALUE)
 	const inputRef = useRef<HTMLInputElement>()
 	const navigate = useNavigate()
 
 	const redirectWithUserSeq = () => {
 		const value = Number(inputRef.current?.value)
 		console.log(value)
-		if (!value || value < 1 || value > 10 * 1000 * 1000) {
+		if (!value || value < USER_MIN_VALUE || value > USER_MAX_VALUE) {
 			alert('올바른 형식의 User ID를 입력해주세요')
 			return
 		}
