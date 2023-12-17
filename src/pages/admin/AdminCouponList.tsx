@@ -8,36 +8,78 @@ import {
 } from '@/components/admin/coupon/list/AdminCouponList.styles'
 import Button from '@/components/common/Button'
 import { Link } from 'react-router-dom'
+import dayjs from 'dayjs'
 
 const AdminCouponList = () => {
 	const rows: GridRowsProp = [
 		{
 			id: 1,
-			col1: 'Hello',
-			col2: 'World',
+			couponId: 1,
+			name: '테스트AA',
+			code: 'AAA',
+			type: 'FIXED',
+			discount: 0,
+			amount: 1,
+			createdAt: '2023-12-17T06:57:22.025Z',
 		},
 		{
 			id: 2,
-			col1: 'DataGridPro',
-			col2: 'is Awesome',
-		},
-		{
-			id: 3,
-			col1: 'MUI',
-			col2: 'is Amazing',
+			couponId: 2,
+			name: '테스트BB',
+			code: 'BBB',
+			type: 'PERCENTAGE',
+			discount: 0,
+			amount: 1,
+			createdAt: '2023-12-17T06:57:22.025Z',
 		},
 	]
 
 	const columns: GridColDef[] = [
 		{
-			field: 'col1',
-			headerName: 'Column 1',
-			width: 150,
+			field: 'couponId',
+			headerName: 'ID',
+			width: 5,
 		},
 		{
-			field: 'col2',
-			headerName: 'Column 2',
-			width: 150,
+			field: 'name',
+			headerName: '이름',
+			width: 120,
+		},
+		{
+			field: 'code',
+			headerName: '코드',
+			width: 80,
+		},
+		{
+			field: 'type',
+			headerName: '타입',
+			width: 80,
+			valueFormatter(params) {
+				switch (params.value) {
+					case 'FIXED':
+						return '금액 할인'
+					case 'PERCENTAGE':
+						return '퍼센트 할인'
+				}
+			},
+		},
+		{
+			field: 'discount',
+			headerName: '할인 수치',
+			width: 100,
+		},
+		{
+			field: 'amount',
+			headerName: '발급 수량',
+			width: 100,
+		},
+		{
+			field: 'createdAt',
+			headerName: '발급 일시',
+			width: 180,
+			valueFormatter(params) {
+				return dayjs(params.value).format('YYYY-MM-DD HH:mm:ss')
+			},
 		},
 	]
 
@@ -50,7 +92,7 @@ const AdminCouponList = () => {
 				</Link>
 			</AdminCouponListHeaderContainer>
 			<AdminCouponListContentContainer>
-				<DataGrid rows={rows} columns={columns} />
+				<DataGrid columns={columns} rows={rows} />
 			</AdminCouponListContentContainer>
 		</AdminCouponListContainer>
 	)
