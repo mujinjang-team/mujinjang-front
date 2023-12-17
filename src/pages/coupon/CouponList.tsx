@@ -15,6 +15,7 @@ import {
 import CouponIcon from '@/assets/icons/icon-coupon.svg'
 import { CouponDataType } from '@/types/Coupon.types'
 import dayjs from 'dayjs'
+import { Link } from 'react-router-dom'
 
 type CouponCardProps = {
 	coupon: CouponDataType
@@ -67,37 +68,39 @@ const CouponCard = ({ coupon }: CouponCardProps) => {
 	const formattedCreatedTime = dayjs(createdAt).format('YYYY-MM-DD HH:MM')
 
 	return (
-		<CouponCardWrapper>
-			<CouponCardIconWrapper>
-				<img src={CouponIcon} alt="Coupon Icon" />
-			</CouponCardIconWrapper>
-			<CouponCardInfoWrapper>
-				<CouponCardInfoRow>
-					<CouponCardInfoTitle>쿠폰 이름</CouponCardInfoTitle>
-					<CouponCardInfoContent>{name}</CouponCardInfoContent>
-				</CouponCardInfoRow>
-				<CouponCardInfoRow>
-					<CouponCardInfoTitle>쿠폰 코드</CouponCardInfoTitle>
-					<CouponCardInfoContent>{code}</CouponCardInfoContent>
-				</CouponCardInfoRow>
-				<CouponCardInfoRow>
-					<CouponCardInfoTitle>쿠폰 타입</CouponCardInfoTitle>
-					<CouponCardInfoContent>{type}</CouponCardInfoContent>
-				</CouponCardInfoRow>
-				<CouponCardInfoRow>
-					<CouponCardInfoTitle>쿠폰 할인율</CouponCardInfoTitle>
-					<CouponCardInfoContent>{discount}%</CouponCardInfoContent>
-				</CouponCardInfoRow>
-				<CouponCardInfoRow>
-					<CouponCardInfoTitle>쿠폰 발급 수량</CouponCardInfoTitle>
-					<CouponCardInfoContent>{amount}</CouponCardInfoContent>
-				</CouponCardInfoRow>
-				<CouponCardInfoRow>
-					<CouponCardInfoTitle>쿠폰 발급 일자</CouponCardInfoTitle>
-					<CouponCardInfoContent>{formattedCreatedTime}</CouponCardInfoContent>
-				</CouponCardInfoRow>
-			</CouponCardInfoWrapper>
-			<CouponCardIdWrapper>Coupon No. {couponId}</CouponCardIdWrapper>
-		</CouponCardWrapper>
+		<Link to={`/coupon/detail/${couponId}`}>
+			<CouponCardWrapper>
+				<CouponCardIconWrapper>
+					<img src={CouponIcon} alt="Coupon Icon" />
+				</CouponCardIconWrapper>
+				<CouponCardInfoWrapper>
+					<CouponCardInfoRow>
+						<CouponCardInfoTitle>쿠폰 이름</CouponCardInfoTitle>
+						<CouponCardInfoContent>{name}</CouponCardInfoContent>
+					</CouponCardInfoRow>
+					<CouponCardInfoRow>
+						<CouponCardInfoTitle>쿠폰 코드</CouponCardInfoTitle>
+						<CouponCardInfoContent>{code}</CouponCardInfoContent>
+					</CouponCardInfoRow>
+					<CouponCardInfoRow>
+						<CouponCardInfoTitle>쿠폰 타입</CouponCardInfoTitle>
+						<CouponCardInfoContent>{type}</CouponCardInfoContent>
+					</CouponCardInfoRow>
+					<CouponCardInfoRow>
+						<CouponCardInfoTitle>쿠폰 할인율</CouponCardInfoTitle>
+						<CouponCardInfoContent>{discount}%</CouponCardInfoContent>
+					</CouponCardInfoRow>
+					<CouponCardInfoRow>
+						<CouponCardInfoTitle>쿠폰 발급 수량</CouponCardInfoTitle>
+						<CouponCardInfoContent>{amount}</CouponCardInfoContent>
+					</CouponCardInfoRow>
+					<CouponCardInfoRow>
+						<CouponCardInfoTitle>쿠폰 발급 일자</CouponCardInfoTitle>
+						<CouponCardInfoContent>{formattedCreatedTime}</CouponCardInfoContent>
+					</CouponCardInfoRow>
+				</CouponCardInfoWrapper>
+				<CouponCardIdWrapper>Coupon No. {couponId}</CouponCardIdWrapper>
+			</CouponCardWrapper>
+		</Link>
 	)
 }
