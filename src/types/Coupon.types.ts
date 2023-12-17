@@ -13,3 +13,7 @@ export type CouponStatusType =
 	| 'COUPON_USE_AVAILABLE'
 	| 'COUPON_CREATE_FINISHED'
 	| 'COUPON_USE_COMPLETED'
+
+export type CouponCardProps = {
+	coupon: CouponDataType
+}
