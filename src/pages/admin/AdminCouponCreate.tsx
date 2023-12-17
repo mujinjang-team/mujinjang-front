@@ -74,12 +74,17 @@ const AdminCouponCreate = () => {
 				<Button
 					variant="black"
 					onClick={() => {
-						console.log('Clicked')
-						console.log(codeRef.current?.value)
-						console.log(nameRef.current?.value)
-						console.log(discountRef.current?.value)
-						console.log(amountRef.current?.value)
-						console.log(type)
+						const name = nameRef.current?.value
+						const code = codeRef.current?.value
+						const discount = discountRef.current?.value
+						const amount = amountRef.current?.value
+
+						if (!name || !name.trim() || !code || !code.trim() || !discount || !amount) {
+							alert('모든 입력값을 필수로 입력해야 합니다.')
+							return
+						}
+
+						console.log('call api')
 					}}
 				>
 					쿠폰 발급하기
