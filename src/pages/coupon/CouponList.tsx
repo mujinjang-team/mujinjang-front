@@ -9,8 +9,23 @@ import { CouponDataType } from '@/types/Coupon.types'
 import CouponCard from '@/components/coupon/CouponCard'
 import withAuthCheck from '@/containers/withAuthCheck'
 import { Link } from 'react-router-dom'
+import localStorage from '@/libs/localStorage'
+import { useQuery } from '@tanstack/react-query'
+import api from '@/libs/api'
+import LoadingView from '@/components/common/LoadingView'
 
 const CouponList = () => {
+	const userSeq = localStorage.getItem('user')
+	console.log(userSeq)
+
+	const { data, isLoading, isError } = useQuery({
+		queryKey: ['couponList'],
+		queryFn: async () => {
+			return await api.getCoupons()
+		},
+	})
+	console.log(data)
+
 	const [couponList] = useState<CouponDataType[]>([
 		{
 			couponId: 1,
@@ -34,7 +49,11 @@ const CouponList = () => {
 		},
 	])
 
-	if (couponList.length === 0) {
+	if (isLoading) {
+		return <LoadingView />
+	}
+
+	if (isError || couponList.length === 0) {
 		return (
 			<CouponListEmptyViewWrapper>
 				<CouponListEmptyViewTitle>발급받을 수 있는 쿠폰이 없어요 🥲</CouponListEmptyViewTitle>
