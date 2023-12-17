@@ -4,15 +4,15 @@ export const CouponCardWrapper = styled.div`
 	position: relative;
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 	align-items: center;
-	gap: 32px;
+	gap: 48px;
 	width: 100%;
 	padding: 24px 36px;
 	border-radius: 8px;
 	box-shadow:
 		0 3px 6px rgba(0, 0, 0, 0.16),
 		0 3px 6px rgba(0, 0, 0, 0.23);
-	cursor: pointer;
 `
 
 export const CouponCardIdWrapper = styled.div`
