@@ -35,8 +35,11 @@ const CouponCard = ({ coupon }: CouponCardProps) => {
 					<CouponCardInfoContent>{type}</CouponCardInfoContent>
 				</CouponCardInfoRow>
 				<CouponCardInfoRow>
-					<CouponCardInfoTitle>쿠폰 할인율</CouponCardInfoTitle>
-					<CouponCardInfoContent>{discount}%</CouponCardInfoContent>
+					<CouponCardInfoTitle>쿠폰 할인 정보</CouponCardInfoTitle>
+					<CouponCardInfoContent>
+						{discount}
+						{type === 'FIXED' ? '원' : '%'}
+					</CouponCardInfoContent>
 				</CouponCardInfoRow>
 				<CouponCardInfoRow>
 					<CouponCardInfoTitle>쿠폰 발급 수량</CouponCardInfoTitle>
