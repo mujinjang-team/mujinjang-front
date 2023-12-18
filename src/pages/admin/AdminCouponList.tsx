@@ -12,43 +12,28 @@ import {
 import Button from '@/components/common/Button'
 import { Link } from 'react-router-dom'
 import dayjs from 'dayjs'
-import api from '@/libs/api'
-import { useQuery } from '@tanstack/react-query'
 import LoadingView from '@/components/common/LoadingView'
+import { useQuery } from '@tanstack/react-query'
+import api from '@/libs/api'
 
 const AdminCouponList = () => {
 	const { data, isLoading, isError } = useQuery({
-		queryKey: ['couponList'],
+		queryKey: ['coupon/couponList'],
 		queryFn: async () => {
 			return await api.getCoupons()
 		},
 	})
-	console.log(data)
 
-	const rows: GridRowsProp = [
-		{
-			id: 1,
-			couponId: 1,
-			name: '테스트AA',
-			code: 'AAA',
-			type: 'FIXED',
-			discount: 0,
-			amount: 1,
-			remainCouponNum: 1,
-			createdAt: '2023-12-17T06:57:22.025Z',
-		},
-		{
-			id: 2,
-			couponId: 2,
-			name: '테스트BB',
-			code: 'BBB',
-			type: 'PERCENTAGE',
-			discount: 0,
-			amount: 1,
-			remainCouponNum: 1,
-			createdAt: '2023-12-17T06:57:22.025Z',
-		},
-	]
+	if (!data || !data.content || isError) {
+		return (
+			<AdminCouponListEmptyViewWrapper>
+				<AdminCouponListEmptyViewTitle>쿠폰 데이터가 조회되지 않아요</AdminCouponListEmptyViewTitle>
+				<AdminCouponListEmptyViewSubTitle>잠시 후 다시 시도해 주세요</AdminCouponListEmptyViewSubTitle>
+			</AdminCouponListEmptyViewWrapper>
+		)
+	}
+
+	const rows: GridRowsProp = data.content
 
 	const columns: GridColDef[] = [
 		{
@@ -99,22 +84,13 @@ const AdminCouponList = () => {
 			headerName: '발급 일시',
 			width: 180,
 			valueFormatter(params) {
-				return dayjs(params.value).format('YYYY-MM-DD HH:mm:ss')
+				return dayjs(params.value).format('YYYY-MM-DD')
 			},
 		},
 	]
 
 	if (isLoading) {
 		return <LoadingView />
-	}
-
-	if (isError) {
-		return (
-			<AdminCouponListEmptyViewWrapper>
-				<AdminCouponListEmptyViewTitle>쿠폰 데이터가 조회되지 않아요</AdminCouponListEmptyViewTitle>
-				<AdminCouponListEmptyViewSubTitle>잠시 후 다시 시도해 주세요</AdminCouponListEmptyViewSubTitle>
-			</AdminCouponListEmptyViewWrapper>
-		)
 	}
 
 	return (

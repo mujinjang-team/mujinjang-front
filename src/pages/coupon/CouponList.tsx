@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
 	CouponListWrapper,
 	CouponListEmptyViewWrapper,
@@ -19,35 +19,13 @@ const CouponList = () => {
 	console.log(userSeq)
 
 	const { data, isLoading, isError } = useQuery({
-		queryKey: ['couponList'],
+		queryKey: ['coupon/couponList'],
 		queryFn: async () => {
 			return await api.getCoupons()
 		},
 	})
-	console.log(data)
 
-	const [couponList] = useState<CouponDataType[]>([
-		{
-			couponId: 1,
-			name: '테스트AA',
-			code: 'AAA',
-			type: 'FIXED',
-			discount: 0,
-			amount: 1,
-			remainCouponNum: 1,
-			createdAt: '2023-12-17T06:57:22.025Z',
-		},
-		{
-			couponId: 2,
-			name: '테스트BB',
-			code: 'BBB',
-			type: 'PERCENTAGE',
-			discount: 0,
-			amount: 1,
-			remainCouponNum: 1,
-			createdAt: '2023-12-17T06:57:22.025Z',
-		},
-	])
+	const couponList: CouponDataType[] = (data?.content as CouponDataType[]) || []
 
 	if (isLoading) {
 		return <LoadingView />

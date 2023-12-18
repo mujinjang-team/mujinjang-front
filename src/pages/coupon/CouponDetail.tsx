@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
 	CouponCardContainer,
 	CouponControlContainer,
@@ -6,45 +6,89 @@ import {
 	CouponDetailInfo,
 	CouponDetailInfoContainer,
 } from '@/components/coupon/CouponDetail.styles'
-import { useParams } from 'react-router-dom'
-import {
-	CouponUseAvaliableButton,
-	CouponUsedButton,
-	CouponCreateButton,
-	CouponCreateDisableButton,
-} from '@/components/coupon/CouponButton'
+import { useNavigate, useParams } from 'react-router-dom'
 import withAuthCheck from '@/containers/withAuthCheck'
 import localStorage from '@/libs/localStorage'
 import CouponCard from '@/components/coupon/CouponCard'
 import { CouponDataType } from '@/types/Coupon.types'
-
-type CouponProps = {
-	isCreated: boolean
-	isAvailable: boolean
-}
+import Button from '@/components/common/Button'
+import LoadingView from '@/components/common/LoadingView'
+import { useMutation, useQuery } from '@tanstack/react-query'
+import api, { PostCouponWalletsIssueRequest } from '@/libs/api'
 
 const CouponDetail = () => {
 	const userSeq = localStorage.getItem('user')
 	const { id: couponId } = useParams()
-	console.log(userSeq)
-	console.log(couponId)
+	const navigate = useNavigate()
 
-	const [isCouponCreateAvailable] = useState(true)
-
-	const coupon: CouponDataType = {
-		couponId: 1,
-		name: '테스트AA',
-		code: 'AAA',
-		type: 'FIXED',
-		discount: 0,
-		amount: 1,
-		remainCouponNum: 1,
-		createdAt: '2023-12-17T06:57:22.025Z',
-	}
-	const [couponStatus] = useState<CouponProps>({
-		isCreated: false,
-		isAvailable: false,
+	const { data, isLoading, isError, refetch } = useQuery({
+		queryKey: ['coupon/getCouponId'],
+		queryFn: async () => {
+			return await api.getCouponsId(Number(couponId))
+		},
 	})
+
+	const { data: couponRemainData, refetch: refetchCouponRemainData } = useQuery({
+		queryKey: ['coupon/couponRemain'],
+		queryFn: async () => {
+			return await api.getCouponsCouponIdRemain(Number(couponId))
+		},
+	})
+
+	const { data: couponIssuedData } = useQuery({
+		queryKey: ['coupon/couponIssued'],
+		queryFn: async () => {
+			return await api.getUserCouponIssued(Number(userSeq), Number(couponId))
+		},
+	})
+
+	const { data: couponUsedData } = useQuery({
+		queryKey: ['coupon/couponUsed'],
+		queryFn: async () => {
+			return await api.getUserCouponUsed(Number(userSeq), Number(couponId))
+		},
+	})
+
+	const { mutate: createCouponWalletMutate, isPending: isCreateCouponWalletPending } = useMutation({
+		mutationKey: ['createCouponWallet'],
+		mutationFn: async (payload: PostCouponWalletsIssueRequest) => {
+			return await api.postCouponWalletsIssue(payload)
+		},
+		onSuccess: () => {
+			refetch()
+			refetchCouponRemainData()
+		},
+		onError: () => {
+			alert('쿠폰 발급에 실패했습니다.')
+		},
+	})
+
+	const { mutate: useCouponMutation, isPending: isUseCouponMutationPending } = useMutation({
+		mutationKey: ['useCoupon'],
+		mutationFn: async () => {
+			return await api.patchCouponWalletsUse(Number(couponId))
+		},
+		onSuccess: () => {
+			refetch()
+			refetchCouponRemainData()
+		},
+		onError: () => {
+			alert('쿠폰 발급에 실패했습니다.')
+		},
+	})
+
+	if (isLoading) {
+		return <LoadingView />
+	}
+
+	if (!data || isError) {
+		alert('쿠폰 데이터 조회가 정상적으로 이루어지지 않습니다. 잠시 후 다시 시도해 주세요.')
+		navigate('/coupon/list')
+
+		return
+	}
+
+	const coupon: CouponDataType = data as CouponDataType
 
 	return (
 		<CouponDetailContainer>
@@ -55,16 +99,39 @@ const CouponDetail = () => {
 				<CouponCard coupon={coupon} />
 			</CouponCardContainer>
 			<CouponControlContainer>
-				{couponStatus.isCreated ? (
-					couponStatus.isAvailable ? (
-						<CouponUseAvaliableButton />
+				{!couponRemainData ? (
+					<Button variant="blue" disabled>
+						선착순 쿠폰 발급이 종료되었습니다
+					</Button>
+				) : couponIssuedData ? (
+					couponUsedData ? (
+						<Button variant="blue" disabled>
+							쿠폰이 사용되었습니다
+						</Button>
 					) : (
-						<CouponUsedButton />
+						<Button
+							variant="blue"
+							onClick={() => {
+								useCouponMutation()
+							}}
+							isLoading={isUseCouponMutationPending}
+						>
+							쿠폰 사용하기
+						</Button>
 					)
-				) : isCouponCreateAvailable ? (
-					<CouponCreateButton />
 				) : (
-					<CouponCreateDisableButton />
+					<Button
+						variant="blue"
+						onClick={() => {
+							createCouponWalletMutate({
+								couponId: Number(couponId),
+								userId: Number(userSeq),
+							})
+						}}
+						isLoading={isCreateCouponWalletPending}
+					>
+						선착순 쿠폰 발급받기
+					</Button>
 				)}
 			</CouponControlContainer>
 		</CouponDetailContainer>
