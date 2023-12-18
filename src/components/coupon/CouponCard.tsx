@@ -14,7 +14,7 @@ import { CouponCardProps } from '@/types/Coupon.types'
 
 const CouponCard = ({ coupon }: CouponCardProps) => {
 	const { couponId, name, code, type, discount, amount, remainCouponNum, createdAt } = coupon
-	const formattedCreatedTime = dayjs(createdAt).format('YYYY-MM-DD HH:MM')
+	const formattedCreatedTime = dayjs(createdAt).format('YYYY-MM-DD')
 
 	return (
 		<CouponCardWrapper>
